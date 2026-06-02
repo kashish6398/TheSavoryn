@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/savoryn_logo.png";
 import { Menu, X } from "lucide-react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive = (path) => currentPath === path;
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100 transition-all duration-300">
@@ -26,29 +30,46 @@ function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-8 font-medium">
-            <Link to="/" className="text-brand-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-brand-primary">
+          <div className="hidden md:flex items-center gap-8 font-semibold">
+            <Link 
+              to="/" 
+              className={`transition-colors relative pb-1 ${
+                isActive("/") 
+                  ? "text-brand-primary after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2.5px] after:bg-brand-primary" 
+                  : "text-gray-600 hover:text-brand-primary"
+              }`}
+            >
               Home
             </Link>
-            <a href="/#categories" className="text-gray-600 hover:text-brand-primary transition-colors">
+            
+            <Link 
+              to="/find-chef" 
+              className={`transition-colors relative pb-1 ${
+                isActive("/find-chef") 
+                  ? "text-brand-primary after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2.5px] after:bg-brand-primary" 
+                  : "text-gray-600 hover:text-brand-primary"
+              }`}
+            >
               Find Chef
-            </a>
-            <a href="/#experts" className="text-gray-600 hover:text-brand-primary transition-colors">
+            </Link>
+
+            <a href="/#experts" className="text-gray-600 hover:text-brand-primary transition-colors pb-1">
               Find Jobs
             </a>
-            <a href="/#contact" className="text-gray-600 hover:text-brand-primary transition-colors">
+            
+            <a href="/#contact" className="text-gray-600 hover:text-brand-primary transition-colors pb-1">
               About Us
             </a>
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/login" className="text-gray-700 hover:text-brand-primary font-medium px-4 py-2 transition-colors">
+            <Link to="/login" className="text-gray-700 hover:text-brand-primary font-bold px-4 py-2 transition-colors">
               Sign In
             </Link>
             <Link 
               to="/register" 
-              className="bg-brand-primary hover:bg-brand-primary-hover text-white px-6 py-2.5 rounded-full font-semibold shadow-lg shadow-brand-primary/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+              className="bg-brand-primary hover:bg-brand-primary-hover text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-brand-primary/20 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               Register
             </Link>
@@ -87,28 +108,36 @@ function Navbar() {
           <Link 
             to="/" 
             onClick={() => setIsOpen(false)}
-            className="block px-4 py-2.5 rounded-lg text-brand-primary bg-brand-primary-light font-semibold"
+            className={`block px-4 py-2.5 rounded-lg font-bold ${
+              isActive("/") 
+                ? "text-brand-primary bg-brand-primary-light" 
+                : "text-gray-700 hover:bg-gray-50 hover:text-brand-primary"
+            }`}
           >
             Home
           </Link>
-          <a 
-            href="/#categories" 
+          <Link 
+            to="/find-chef" 
             onClick={() => setIsOpen(false)}
-            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-medium transition-colors"
+            className={`block px-4 py-2.5 rounded-lg font-bold ${
+              isActive("/find-chef") 
+                ? "text-brand-primary bg-brand-primary-light" 
+                : "text-gray-700 hover:bg-gray-50 hover:text-brand-primary"
+            }`}
           >
             Find Chef
-          </a>
+          </Link>
           <a 
             href="/#experts" 
             onClick={() => setIsOpen(false)}
-            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-medium transition-colors"
+            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-bold transition-colors"
           >
             Find Jobs
           </a>
           <a 
             href="/#contact" 
             onClick={() => setIsOpen(false)}
-            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-medium transition-colors"
+            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-bold transition-colors"
           >
             About Us
           </a>
@@ -116,14 +145,14 @@ function Navbar() {
             <Link 
               to="/login" 
               onClick={() => setIsOpen(false)}
-              className="text-center py-2.5 text-gray-700 hover:text-brand-primary font-semibold transition-colors"
+              className="text-center py-2.5 text-gray-700 hover:text-brand-primary font-bold transition-colors"
             >
               Sign In
             </Link>
             <Link 
               to="/register" 
               onClick={() => setIsOpen(false)}
-              className="text-center bg-brand-primary hover:bg-brand-primary-hover text-white py-2.5 rounded-full font-semibold shadow-md transition-colors"
+              className="text-center bg-brand-primary hover:bg-brand-primary-hover text-white py-2.5 rounded-full font-bold shadow-md transition-colors"
             >
               Register
             </Link>
