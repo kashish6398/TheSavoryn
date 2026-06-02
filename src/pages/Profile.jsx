@@ -121,7 +121,7 @@ function Profile() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               {/* Toggle Seek Job Switch */}
               <div className="flex items-center gap-3">
-                <span className="text-xs sm:text-sm font-extrabold text-brand-dark">
+                <span className="text-xs sm:text-sm font-bold text-brand-dark">
                   Are you looking for Chef Job?
                 </span>
                 <button 
