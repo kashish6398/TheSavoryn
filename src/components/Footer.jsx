@@ -1,5 +1,6 @@
 import logo from "../assets/savoryn_logo.png";
 import { Globe, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -69,10 +70,10 @@ function Footer() {
               <div className="space-y-4">
                 <h4 className="text-sm font-extrabold uppercase tracking-wider text-brand-primary">Resources</h4>
                 <ul className="space-y-2.5 text-sm text-white/70 font-semibold">
-                  <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-                  <li><a href="#categories" className="hover:text-white transition-colors">Find Chefs</a></li>
-                  <li><a href="#experts" className="hover:text-white transition-colors">Find Jobs</a></li>
-                  <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+                  <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+                  <li><a href="/#categories" className="hover:text-white transition-colors">Find Chefs</a></li>
+                  <li><a href="/#experts" className="hover:text-white transition-colors">Find Jobs</a></li>
+                  <li><a href="/#about" className="hover:text-white transition-colors">About Us</a></li>
                 </ul>
               </div>
 
@@ -80,10 +81,10 @@ function Footer() {
               <div className="space-y-4">
                 <h4 className="text-sm font-extrabold uppercase tracking-wider text-brand-primary">Solutions</h4>
                 <ul className="space-y-2.5 text-sm text-white/70 font-semibold">
-                  <li><a href="#hiring" className="hover:text-white transition-colors">Hiring Solutions</a></li>
-                  <li><a href="#careers" className="hover:text-white transition-colors">Careers</a></li>
-                  <li><a href="#pricing" className="hover:text-white transition-colors">Pricing Plans</a></li>
-                  <li><a href="#premium" className="hover:text-white transition-colors">Premium Features</a></li>
+                  <li><Link to="/login" className="hover:text-white transition-colors">Sign In</Link></li>
+                  <li><Link to="/register" className="hover:text-white transition-colors">Register</Link></li>
+                  <li><a href="/#categories" className="hover:text-white transition-colors">Pricing Plans</a></li>
+                  <li><a href="/#experts" className="hover:text-white transition-colors">Premium Features</a></li>
                 </ul>
               </div>
 
@@ -91,10 +92,10 @@ function Footer() {
               <div className="space-y-4 col-span-2 sm:col-span-1">
                 <h4 className="text-sm font-extrabold uppercase tracking-wider text-brand-primary">Company</h4>
                 <ul className="space-y-2.5 text-sm text-white/70 font-semibold">
-                  <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-                  <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
-                  <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-                  <li><a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                  <li><a href="/#about" className="hover:text-white transition-colors">About</a></li>
+                  <li><a href="/#contact" className="hover:text-white transition-colors">Contact</a></li>
+                  <li><a href="/#services" className="hover:text-white transition-colors">Services</a></li>
+                  <li><a href="/#privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
                 </ul>
               </div>
 
