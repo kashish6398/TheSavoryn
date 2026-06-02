@@ -73,24 +73,24 @@ function Navbar() {
             >
               Register
             </Link>
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200 cursor-pointer hover:border-brand-primary transition-all">
+            <Link to="/profile" className="w-10 h-10 rounded-full overflow-hidden border border-gray-200 cursor-pointer hover:border-brand-primary transition-all block">
               <img 
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" 
                 alt="User Profile" 
                 className="w-full h-full object-cover"
               />
-            </div>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-200">
+            <Link to="/profile" className="w-9 h-9 rounded-full overflow-hidden border border-gray-200 block">
               <img 
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" 
                 alt="User Profile" 
                 className="w-full h-full object-cover"
               />
-            </div>
+            </Link>
             <button 
               onClick={() => setIsOpen(!isOpen)} 
               className="p-2 rounded-lg text-gray-600 hover:text-brand-primary hover:bg-gray-50 focus:outline-none transition-colors"
