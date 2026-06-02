@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #F24E1E;
+  --color-brand-primary-hover: #D83B0F;
+  --color-brand-primary-light: #FFF5F2;
+  --color-brand-dark: #1F2937;
+  --color-brand-dark-deep: #111827;
+  --color-brand-crimson: #631B0D;
+  --color-brand-crimson-dark: #491309;
+  
+  --animate-float-slow: float-slow 6s ease-in-out infinite;
+  --animate-float-medium: float-medium 4s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 20s linear infinite;
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a9a9a9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--color-brand-dark);
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Rounded Teardrop shape custom borders */
+.shape-teardrop {
+  border-radius: 50% 50% 50% 0;
+}
+.shape-teardrop-reverse {
+  border-radius: 50% 50% 0 50%;
+}
+.shape-leaf-blue {
+  border-radius: 100px 100px 0 100px;
+}
+.shape-leaf-yellow {
+  border-radius: 100px 100px 100px 0;
+}
+.shape-leaf-red {
+  border-radius: 0 100px 100px 100px;
+}
