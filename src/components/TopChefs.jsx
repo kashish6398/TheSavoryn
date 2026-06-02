@@ -64,7 +64,7 @@ function TopChefs() {
               {/* Teardrop Leaf Frame Wrapper */}
               <div className={`relative w-64 h-64 border-4 overflow-hidden shadow-xl transform group-hover:scale-105 transition-all duration-500 ease-out flex items-end justify-center ${chef.shapeClass}`}>
                 {/* Background color glow inside */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent z-10" />
                 
                 <img
                   src={chef.image}

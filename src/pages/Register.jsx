@@ -141,7 +141,7 @@ function Register() {
                 onClick={() => alert("Google signup flow initialized.")}
                 className="flex items-center justify-center gap-2.5 border border-gray-200 bg-[#f8fafc] hover:bg-gray-50 rounded-xl py-3 px-4 transition-colors cursor-pointer text-xs font-bold text-gray-700"
               >
-                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                   <path
                     fill="#EA4335"
                     d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.13-5.136 4.13A5.76 5.76 0 0 1 8.2 12.77a5.76 5.76 0 0 1 5.79-5.77c2.5 0 4.31 1.08 5.26 2l3.1-3.1C20.39 3.96 17.5 2.5 13.99 2.5a9.77 9.77 0 0 0-9.75 9.77 9.77 0 0 0 9.75 9.77c5.29 0 9.76-3.8 9.76-9.77 0-.66-.08-1.3-.21-1.98H12.24z"
@@ -156,7 +156,7 @@ function Register() {
                 onClick={() => alert("Email signup flow initialized.")}
                 className="flex items-center justify-center gap-2.5 border border-gray-200 bg-[#f8fafc] hover:bg-gray-50 rounded-xl py-3 px-4 transition-colors cursor-pointer text-xs font-bold text-gray-700"
               >
-                <Mail size={16} className="text-gray-500 flex-shrink-0" />
+                <Mail size={16} className="text-gray-500 shrink-0" />
                 <span>Continue with Email</span>
               </button>
 
@@ -178,7 +178,7 @@ function Register() {
 
       {/* Right Column: Hero Image Section */}
       <div className="hidden lg:block lg:col-span-7 relative bg-brand-dark">
-        <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-r from-white/10 to-transparent z-10 pointer-events-none" />
         <img 
           src={chefImg} 
           alt="Chef Sign Up background" 
@@ -187,7 +187,7 @@ function Register() {
         
         {/* Decorative badge overlaying image */}
         <div className="absolute bottom-8 right-8 bg-black/60 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex items-center gap-3 shadow-xl max-w-sm z-20">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-white/10 flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-white/10 flex items-center justify-center shrink-0">
             <img src={logo} alt="Savoryn Logo" className="w-8 h-8 object-contain" />
           </div>
           <div>

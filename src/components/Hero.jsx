@@ -3,7 +3,7 @@ import { Search, MapPin, CheckCircle, Award, Compass, ShieldCheck } from "lucide
 
 function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-20 md:py-40 bg-gradient-to-br from-white via-brand-primary-light/10 to-white overflow-hidden">
+    <section id="home" className="relative pt-32 pb-20 md:py-40 bg-linear-to-br from-white via-brand-primary-light/10 to-white overflow-hidden">
       
       {/* Decorative Background Elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -33,7 +33,7 @@ function Hero() {
             <div className="relative max-w-xl mx-auto lg:mx-0">
               <div className="flex flex-col sm:flex-row items-center bg-white border border-gray-100 rounded-2xl sm:rounded-full p-2.5 shadow-xl shadow-gray-200/50 gap-2">
                 <div className="flex items-center w-full px-3 gap-2">
-                  <MapPin className="text-brand-primary flex-shrink-0" size={20} />
+                  <MapPin className="text-brand-primary shrink-0" size={20} />
                   <input
                     type="text"
                     placeholder="Search by location or cuisine..."
@@ -81,7 +81,7 @@ function Hero() {
 
               {/* Big Chef Frame */}
               <div className="relative w-full h-full bg-brand-primary-light/40 rounded-t-[200px] rounded-b-[200px] border-4 border-white shadow-2xl overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/15 to-transparent z-10" />
+                <div className="absolute inset-0 bg-linear-to-t from-brand-primary/15 to-transparent z-10" />
                 <img
                   src={chefImg}
                   alt="Finest Chef"

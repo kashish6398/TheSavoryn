@@ -65,7 +65,7 @@ function CookExpert1() {
                   "Hassle-free booking and payments"
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-sm sm:text-base">
-                    <CheckCircle2 className="text-brand-primary flex-shrink-0" size={18} />
+                    <CheckCircle2 className="text-brand-primary shrink-0" size={18} />
                     <span className="text-gray-700 font-semibold">{item}</span>
                   </li>
                 ))}

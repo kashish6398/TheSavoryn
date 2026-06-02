@@ -62,7 +62,7 @@ function Categories() {
             return (
               <div 
                 key={cat.id} 
-                className="group relative bg-gradient-to-b from-brand-primary-light/50 to-white/30 border border-brand-primary/10 hover:border-brand-primary/30 rounded-3xl p-8 flex flex-col items-center text-center shadow-lg hover:shadow-2xl shadow-gray-100 hover:shadow-brand-primary/5 -translate-y-0 hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden"
+                className="group relative bg-linear-to-b from-brand-primary-light/50 to-white/30 border border-brand-primary/10 hover:border-brand-primary/30 rounded-3xl p-8 flex flex-col items-center text-center shadow-lg hover:shadow-2xl shadow-gray-100 hover:shadow-brand-primary/5 translate-y-0 hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden"
               >
                 {/* Decorative Background Shapes */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 rounded-bl-[100px] pointer-events-none transform translate-x-2 -translate-y-2 group-hover:scale-110 transition-transform duration-500" />

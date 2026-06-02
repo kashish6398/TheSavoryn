@@ -30,7 +30,7 @@ function CookExpert2() {
             {/* List with Icons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-brand-primary-light flex items-center justify-center text-brand-primary flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-brand-primary-light flex items-center justify-center text-brand-primary shrink-0">
                   <Award size={22} />
                 </div>
                 <div>
@@ -40,7 +40,7 @@ function CookExpert2() {
               </div>
 
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
                   <Clock size={22} />
                 </div>
                 <div>
@@ -50,7 +50,7 @@ function CookExpert2() {
               </div>
 
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                   <HeartHandshake size={22} />
                 </div>
                 <div>
@@ -77,7 +77,7 @@ function CookExpert2() {
             </div>
 
             {/* Floating leafy green garnish decoration */}
-            <div className="absolute -left-0 bottom-72 bg-white/95 backdrop-blur border border-gray-100 p-3 rounded-2xl shadow-xl flex items-center justify-center animate-float-slow">
+            <div className="absolute left-0 bottom-72 bg-white/95 backdrop-blur border border-gray-100 p-3 rounded-2xl shadow-xl flex items-center justify-center animate-float-slow">
               <span className="text-4xl">🌱</span>
             </div>
 

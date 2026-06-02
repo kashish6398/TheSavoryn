@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="w-full">
-      
+    
       {/* Tier 1: Bright Orange-Red Newsletter Bar */}
       <div className="bg-brand-primary text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
@@ -35,7 +35,7 @@ function Footer() {
       <div className="bg-brand-crimson text-white/90 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         
         {/* Background Accent Lines */}
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_bottom_left,var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-12 border-b border-white/10">

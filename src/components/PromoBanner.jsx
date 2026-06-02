@@ -2,7 +2,7 @@ function PromoBanner() {
   return (
     <section className="bg-brand-primary text-white py-5 relative overflow-hidden shadow-lg">
       {/* Wave Background Pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p className="text-base sm:text-lg font-bold tracking-wide">

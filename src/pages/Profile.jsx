@@ -93,7 +93,7 @@ function Profile() {
       {/* Navbar */}
       <Navbar />
 
-      <main className="flex-grow pt-32 pb-24">
+      <main className="grow pt-32 pb-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           {/* Profile Header Block */}
@@ -126,7 +126,7 @@ function Profile() {
                 </span>
                 <button 
                   onClick={() => setLookingForJob(!lookingForJob)}
-                  className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                  className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
                     lookingForJob ? "bg-brand-primary" : "bg-gray-200"
                   }`}
                 >
@@ -462,7 +462,7 @@ function Profile() {
                   >
                     
                     {/* Chef Image */}
-                    <div className="w-full md:w-36 md:h-36 lg:w-40 lg:h-40 aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-md flex-shrink-0">
+                    <div className="w-full md:w-36 md:h-36 lg:w-40 lg:h-40 aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-md shrink-0">
                       <img 
                         src={chef.image} 
                         alt={chef.name} 
@@ -471,7 +471,7 @@ function Profile() {
                     </div>
 
                     {/* Chef Details */}
-                    <div className="flex-grow space-y-3.5 pr-0 md:pr-40">
+                    <div className="grow space-y-3.5 pr-0 md:pr-40">
                       
                       {/* Name */}
                       <h3 className="text-xl font-black text-brand-dark tracking-tight hover:text-brand-primary transition-colors cursor-pointer">

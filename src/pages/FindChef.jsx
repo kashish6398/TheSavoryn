@@ -88,7 +88,7 @@ function FindChef() {
       {/* Navbar */}
       <Navbar />
 
-      <main className="flex-grow pt-32 pb-24">
+      <main className="grow pt-32 pb-24">
         
         {/* Header Search Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 mb-16">
@@ -114,7 +114,7 @@ function FindChef() {
               
               {/* Category Input */}
               <div className="md:col-span-5 flex items-center gap-2.5 px-3 border-b md:border-b-0 md:border-r border-gray-100 pb-3 md:pb-0">
-                <Search className="text-brand-primary flex-shrink-0" size={18} />
+                <Search className="text-brand-primary shrink-0" size={18} />
                 <input 
                   type="text" 
                   placeholder="Type your chef Category"
@@ -126,7 +126,7 @@ function FindChef() {
 
               {/* Country Selection */}
               <div className="md:col-span-3 flex items-center gap-2.5 px-3 border-b md:border-b-0 md:border-r border-gray-100 pb-3 md:pb-0">
-                <Globe className="text-gray-400 flex-shrink-0" size={18} />
+                <Globe className="text-gray-400 shrink-0" size={18} />
                 <select 
                   value={selectedCountry}
                   onChange={(e) => setSelectedCountry(e.target.value)}
@@ -141,7 +141,7 @@ function FindChef() {
 
               {/* State Selection */}
               <div className="md:col-span-2 flex items-center gap-2.5 px-3 pb-3 md:pb-0">
-                <MapPin className="text-gray-400 flex-shrink-0" size={18} />
+                <MapPin className="text-gray-400 shrink-0" size={18} />
                 <select 
                   value={selectedState}
                   onChange={(e) => setSelectedState(e.target.value)}
@@ -267,7 +267,7 @@ function FindChef() {
                   >
                     
                     {/* Chef Image */}
-                    <div className="w-full md:w-36 md:h-36 lg:w-40 lg:h-40 aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-md flex-shrink-0">
+                    <div className="w-full md:w-36 md:h-36 lg:w-40 lg:h-40 aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-md shrink-0">
                       <img 
                         src={chef.image} 
                         alt={chef.name} 
@@ -276,7 +276,7 @@ function FindChef() {
                     </div>
 
                     {/* Chef Details */}
-                    <div className="flex-grow space-y-3.5 pr-0 md:pr-40">
+                    <div className="grow space-y-3.5 pr-0 md:pr-40">
                       
                       {/* Name */}
                       <h3 className="text-xl font-black text-brand-dark tracking-tight hover:text-brand-primary transition-colors cursor-pointer">

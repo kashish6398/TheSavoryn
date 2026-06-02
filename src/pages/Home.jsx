@@ -15,7 +15,7 @@ function Home() {
       <Navbar />
       
       {/* Page Content */}
-      <main className="flex-grow">
+      <main className="grow">
         <Hero />
         <PromoBanner />
         <Categories />
