@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   X, Calendar, MapPin, Users, Info, 
   User, Mail, Phone, CheckCircle2, ArrowRight 
 } from "lucide-react";
 
 function BookingModal({ isOpen, onClose, chefName }) {
+  const navigate = useNavigate();
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     eventType: "",
@@ -22,8 +24,18 @@ function BookingModal({ isOpen, onClose, chefName }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate booking submission
-    setIsSuccess(true);
+    // Navigate to payment page with details in state
+    navigate("/payment", {
+      state: {
+        chefName,
+        eventType: formData.eventType,
+        eventDate: formData.eventDate,
+        location: formData.location,
+        budget: formData.budget,
+        guestCount: formData.guestCount
+      }
+    });
+    onClose();
   };
 
   const handleClose = () => {
@@ -51,7 +63,7 @@ function BookingModal({ isOpen, onClose, chefName }) {
       >
         
         {/* Header */}
-        <div className="p-6 border-b border-gray-100 flex items-center justify-between shrink-0 bg-gradient-to-r from-brand-primary-light/30 via-transparent to-transparent">
+        <div className="p-6 border-b border-gray-150 flex items-center justify-between shrink-0 bg-linear-to-r from-brand-primary-light/30 via-transparent to-transparent">
           <div>
             <h2 className="text-xl sm:text-2xl font-black text-brand-dark tracking-tight">
               {isSuccess ? "Booking Confirmed!" : `Book Chef: ${chefName}`}

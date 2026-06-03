@@ -12,6 +12,7 @@ import {
   MessageSquare, CalendarCheck, ShieldCheck, Check 
 } from "lucide-react";
 import BookingModal from "../components/BookingModal";
+import NoteModal from "../components/NoteModal";
 
 function ChefDetails() {
   const { id } = useParams();
@@ -109,6 +110,7 @@ function ChefDetails() {
   };
 
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
 
   // Find chef matching parameter ID, default to chef 1 if not found
   const chef = chefsData[id] || chefsData[1];
@@ -118,7 +120,7 @@ function ChefDetails() {
   };
 
   const handleSendNote = () => {
-    alert(`Send a note modal opened for Chef ${chef.name}. Write your details!`);
+    setIsNoteModalOpen(true);
   };
 
   return (
@@ -310,6 +312,13 @@ function ChefDetails() {
       <BookingModal 
         isOpen={isBookingModalOpen} 
         onClose={() => setIsBookingModalOpen(false)} 
+        chefName={chef.name} 
+      />
+
+      {/* Note Modal */}
+      <NoteModal 
+        isOpen={isNoteModalOpen} 
+        onClose={() => setIsNoteModalOpen(false)} 
         chefName={chef.name} 
       />
     </div>

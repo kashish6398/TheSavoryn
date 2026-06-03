@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import ChefDetails from "./pages/ChefDetails";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/chef/:id" element={<ChefDetails />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
