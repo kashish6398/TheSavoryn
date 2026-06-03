@@ -83,7 +83,7 @@ function Footer() {
                 <ul className="space-y-2.5 text-sm text-white/70 font-semibold">
                   <li><Link to="/login" className="hover:text-white transition-colors">Sign In</Link></li>
                   <li><Link to="/register" className="hover:text-white transition-colors">Register</Link></li>
-                  <li><a href="/#categories" className="hover:text-white transition-colors">Pricing Plans</a></li>
+                  <li><Link to="/pricing" className="hover:text-white transition-colors">Pricing Plans</Link></li>
                   <li><a href="/#experts" className="hover:text-white transition-colors">Premium Features</a></li>
                 </ul>
               </div>

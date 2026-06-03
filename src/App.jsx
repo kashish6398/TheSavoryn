@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import FindChef from "./pages/FindChef";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
+import Pricing from "./pages/Pricing";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/find-chef" element={<FindChef />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
     </Router>
   );

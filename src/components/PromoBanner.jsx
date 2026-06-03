@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function PromoBanner() {
   return (
     <section className="bg-brand-primary text-white py-5 relative overflow-hidden shadow-lg">
@@ -8,9 +10,12 @@ function PromoBanner() {
         <p className="text-base sm:text-lg font-bold tracking-wide">
           Upgrade to Premium – Unlock Exclusive Features for Chefs and Industries!
         </p>
-        <button className="bg-white text-brand-primary hover:bg-brand-primary-light px-6 py-2 rounded-lg font-extrabold text-sm border-2 border-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-black/5 cursor-pointer">
+        <Link 
+          to="/pricing" 
+          className="bg-white text-brand-primary hover:bg-brand-primary-light px-6 py-2 rounded-lg font-extrabold text-sm border-2 border-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-black/5 cursor-pointer inline-block text-center"
+        >
           Subscribe Now
-        </button>
+        </Link>
       </div>
     </section>
   );
