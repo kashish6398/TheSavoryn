@@ -57,9 +57,16 @@ function Navbar() {
               Find Jobs
             </a>
             
-            <a href="/#contact" className="text-gray-600 hover:text-brand-primary transition-colors pb-1">
+            <Link 
+              to="/about" 
+              className={`transition-colors relative pb-1 ${
+                isActive("/about") 
+                  ? "text-brand-primary after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2.5px] after:bg-brand-primary" 
+                  : "text-gray-600 hover:text-brand-primary"
+              }`}
+            >
               About Us
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Actions */}
@@ -134,13 +141,17 @@ function Navbar() {
           >
             Find Jobs
           </a>
-          <a 
-            href="/#contact" 
+          <Link 
+            to="/about" 
             onClick={() => setIsOpen(false)}
-            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-bold transition-colors"
+            className={`block px-4 py-2.5 rounded-lg font-bold ${
+              isActive("/about") 
+                ? "text-brand-primary bg-brand-primary-light" 
+                : "text-gray-700 hover:bg-gray-50 hover:text-brand-primary"
+            }`}
           >
             About Us
-          </a>
+          </Link>
           <div className="border-t border-gray-100 my-2 pt-2 flex flex-col gap-3">
             <Link 
               to="/login" 
