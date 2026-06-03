@@ -53,9 +53,7 @@ function Navbar() {
               Find Chef
             </Link>
 
-            <a href="/#experts" className="text-gray-600 hover:text-brand-primary transition-colors pb-1">
-              Find Jobs
-            </a>
+
             
             <Link 
               to="/about" 
@@ -134,13 +132,7 @@ function Navbar() {
           >
             Find Chef
           </Link>
-          <a 
-            href="/#experts" 
-            onClick={() => setIsOpen(false)}
-            className="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-brand-primary font-bold transition-colors"
-          >
-            Find Jobs
-          </a>
+
           <Link 
             to="/about" 
             onClick={() => setIsOpen(false)}

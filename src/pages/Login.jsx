@@ -9,7 +9,7 @@ function Login() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    isOrganisation: false,
+    isCustomer: false,
   });
 
   const handleSubmit = (e) => {
@@ -89,17 +89,17 @@ function Login() {
               </div>
             </div>
 
-            {/* Checkbox: As a Organisation? */}
+            {/* Checkbox: As a Customer? */}
             <div className="flex items-center gap-2.5 pt-1">
               <input
                 type="checkbox"
-                id="as-org"
-                checked={formData.isOrganisation}
-                onChange={(e) => setFormData({ ...formData, isOrganisation: e.target.checked })}
+                id="as-customer"
+                checked={formData.isCustomer}
+                onChange={(e) => setFormData({ ...formData, isCustomer: e.target.checked })}
                 className="w-4 h-4 text-brand-primary border-gray-300 rounded focus:ring-brand-primary cursor-pointer accent-brand-primary"
               />
-              <label htmlFor="as-org" className="text-xs sm:text-sm font-semibold text-gray-600 cursor-pointer select-none">
-                As a Organisation?
+              <label htmlFor="as-customer" className="text-xs sm:text-sm font-semibold text-gray-600 cursor-pointer select-none">
+                As a Customer?
               </label>
             </div>
 
@@ -181,7 +181,7 @@ function Login() {
           </div>
           <div>
             <h4 className="text-xs font-black text-white">The Savoryn Community</h4>
-            <p className="text-[10px] text-white/70 font-semibold mt-0.5">Explore culinary jobs, discover professional recipes, and hire chefs.</p>
+            <p className="text-[10px] text-white/70 font-semibold mt-0.5">Discover elite culinary recipes, book private events, and manage bookings.</p>
           </div>
         </div>
       </div>

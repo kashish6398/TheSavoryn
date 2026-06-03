@@ -8,7 +8,7 @@ function PromoBanner() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p className="text-base sm:text-lg font-bold tracking-wide">
-          Upgrade to Premium – Unlock Exclusive Features for Chefs and Industries!
+          Upgrade to Premium – Unlock Exclusive Features for Chefs and Customers!
         </p>
         <Link 
           to="/pricing" 

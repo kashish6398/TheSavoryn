@@ -25,7 +25,7 @@ function Hero() {
               </h1>
               
               <p className="text-gray-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Find the perfect chef for your next dinner party, culinary event, or restaurant. Verified professionals, custom menus, and absolute culinary bliss.
+                Find the perfect chef for your next dinner party, private gathering, or custom catering. Verified professionals, tailored menus, and absolute culinary bliss.
               </p>
             </div>
 

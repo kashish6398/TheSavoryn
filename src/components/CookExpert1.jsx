@@ -54,7 +54,7 @@ function CookExpert1() {
 
             <div className="space-y-4 text-gray-600 font-medium">
               <p className="leading-relaxed text-sm sm:text-base">
-                Whether you need a private chef for an intimate dinner, a pastry specialist for a grand celebration, or line cooks for a busy commercial kitchen, we connect you with culinary experts tailored to your requirements.
+                Whether you need a private chef for an intimate dinner, a pastry specialist for a grand celebration, or professional caterers for your private event, we connect you with culinary experts tailored to your requirements.
               </p>
 
               <ul className="space-y-3 pt-2">

@@ -63,10 +63,10 @@ function About() {
           {/* Hero Content */}
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-brand-dark leading-tight tracking-tight max-w-3xl mx-auto">
-              Bridging Culinary Talent with Industry Needs
+              Bridging Culinary Talent with Fine Dining Needs
             </h1>
             <p className="mt-6 text-lg md:text-xl text-gray-600 font-medium">
-              Empowering chefs and industries to connect and grow.
+              Empowering chefs and customers to connect and collaborate.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button className="w-full sm:w-auto bg-brand-primary hover:bg-brand-primary-hover text-white font-extrabold px-8 py-4 rounded-full shadow-lg shadow-brand-primary/20 transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
@@ -97,7 +97,7 @@ function About() {
               </div>
               <h3 className="text-xl font-bold text-brand-dark mb-4">Tailored Matches</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Automated filters to find the perfect chef or business based on skills, location, and preferences.
+                Automated filters to find the perfect chef based on skills, location, and preferences.
               </p>
             </div>
 
@@ -108,7 +108,7 @@ function About() {
               </div>
               <h3 className="text-xl font-bold text-brand-dark mb-4">Growth Opportunities</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Chefs and industries can customize their profile and reputations throughout our platform.
+                Chefs and customers can customize their profile and reputations throughout our platform.
               </p>
             </div>
 
@@ -119,7 +119,7 @@ function About() {
               </div>
               <h3 className="text-xl font-bold text-brand-dark mb-4">Seamless Process</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Streamlined communication, hiring, and collaboration processes.
+                Streamlined communication, booking, and hiring processes.
               </p>
             </div>
 
@@ -130,7 +130,7 @@ function About() {
               </div>
               <h3 className="text-xl font-bold text-brand-dark mb-4">Trusted Network</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                A community of verified professionals and businesses to ensure quality and trust.
+                A community of verified culinary professionals and clients to ensure quality and trust.
               </p>
             </div>
           </div>
@@ -154,7 +154,7 @@ function About() {
                   <ChefHat className="w-6 h-6 text-brand-primary" />
                 </div>
                 <p className="text-gray-700 text-base md:text-lg font-medium leading-relaxed">
-                  "To empower chefs and industries by creating meaningful partnerships through a user-friendly platform."
+                  "To empower chefs and customers by creating meaningful connections through a user-friendly platform."
                 </p>
               </div>
 
@@ -164,7 +164,7 @@ function About() {
                   <Compass className="w-6 h-6 text-brand-primary" />
                 </div>
                 <p className="text-gray-700 text-base md:text-lg font-medium leading-relaxed">
-                  "To be the leading global platform that transforms how chefs and industries connect and collaborate."
+                  "To be the leading global platform that transforms how chefs and customers connect and collaborate."
                 </p>
               </div>
             </div>

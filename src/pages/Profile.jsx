@@ -11,7 +11,7 @@ import {
 
 function Profile() {
   // Page toggle states
-  const [lookingForJob, setLookingForJob] = useState(true);
+  const [availableForBookings, setAvailableForBookings] = useState(true);
   
   // Profile form state
   const [formData, setFormData] = useState({
@@ -122,17 +122,17 @@ function Profile() {
               {/* Toggle Seek Job Switch */}
               <div className="flex items-center gap-3">
                 <span className="text-xs sm:text-sm font-bold text-brand-dark">
-                  Are you looking for Chef Job?
+                  Are you available for bookings?
                 </span>
                 <button 
-                  onClick={() => setLookingForJob(!lookingForJob)}
+                  onClick={() => setAvailableForBookings(!availableForBookings)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    lookingForJob ? "bg-brand-primary" : "bg-gray-200"
+                    availableForBookings ? "bg-brand-primary" : "bg-gray-200"
                   }`}
                 >
                   <span
                     className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                      lookingForJob ? "translate-x-5" : "translate-x-0"
+                      availableForBookings ? "translate-x-5" : "translate-x-0"
                     }`}
                   />
                 </button>
@@ -140,10 +140,10 @@ function Profile() {
 
               {/* Action Button */}
               <button 
-                onClick={() => alert("Redirecting to client flow...")}
+                onClick={() => alert("Redirecting to Customer flow...")}
                 className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-3 px-6 font-extrabold shadow-lg shadow-brand-primary/20 transition-all duration-300 text-sm cursor-pointer"
               >
-                Complete Profile as a client
+                Complete Profile as a Customer
               </button>
             </div>
           </div>
@@ -207,7 +207,7 @@ function Profile() {
               {/* Looking for */}
               <div className="space-y-2">
                 <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Looking for <span className="text-brand-primary">*</span>
+                  Booking Type <span className="text-brand-primary">*</span>
                 </label>
                 <select 
                   name="lookingFor"
@@ -286,7 +286,7 @@ function Profile() {
               {/* Salary Expectation */}
               <div className="space-y-2">
                 <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Salary expectation <span className="text-brand-primary">*</span>
+                  Expected Rate / Salary <span className="text-brand-primary">*</span>
                 </label>
                 <select 
                   name="salaryExpectation"
@@ -355,7 +355,7 @@ function Profile() {
             {/* Experience in Previous Job Section */}
             <div className="border-t border-gray-100 pt-8 space-y-6">
               <h3 className="text-base sm:text-lg font-black text-brand-dark tracking-tight">
-                Experience in previous job details
+                Experience in previous bookings & jobs
               </h3>
 
               {experiences.map((exp, idx) => (
@@ -377,11 +377,11 @@ function Profile() {
                   {/* Company Name */}
                   <div className="md:col-span-6 space-y-2">
                     <label className="block text-xs font-extrabold text-gray-700">
-                      Company name
+                      Client / Restaurant Name
                     </label>
                     <input 
                       type="text" 
-                      placeholder="Type your company name..."
+                      placeholder="Type client or restaurant name..."
                       value={exp.companyName}
                       onChange={(e) => handleExperienceChange(exp.id, "companyName", e.target.value)}
                       className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
@@ -500,7 +500,7 @@ function Profile() {
 
                       {/* Preferred Salary */}
                       <p className="text-xs sm:text-sm text-brand-dark font-extrabold">
-                        Preferred salary range: <span className="text-brand-primary">{chef.salary}</span>
+                        Preferred rate range: <span className="text-brand-primary">{chef.salary}</span>
                       </p>
 
                       {/* Description */}

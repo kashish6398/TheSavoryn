@@ -6,7 +6,7 @@ import { Mail, ArrowLeft } from "lucide-react";
 
 function Register() {
   const navigate = useNavigate();
-  const [isOrganisation, setIsOrganisation] = useState(false);
+  const [isCustomer, setIsCustomer] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -50,25 +50,25 @@ function Register() {
           <div className="bg-[#f0f4f8] p-1 rounded-xl flex gap-1 border border-gray-100 shadow-inner">
             <button
               type="button"
-              onClick={() => setIsOrganisation(false)}
+              onClick={() => setIsCustomer(false)}
               className={`flex-1 text-center py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                !isOrganisation 
+                !isCustomer 
                   ? "bg-white text-brand-primary shadow-md" 
                   : "text-gray-500 hover:text-brand-dark"
               }`}
             >
-              Chef / Individual
+              Chef
             </button>
             <button
               type="button"
-              onClick={() => setIsOrganisation(true)}
+              onClick={() => setIsCustomer(true)}
               className={`flex-1 text-center py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                isOrganisation 
+                isCustomer 
                   ? "bg-white text-brand-primary shadow-md" 
                   : "text-gray-500 hover:text-brand-dark"
               }`}
             >
-              Organisation / Restaurant
+              Customer
             </button>
           </div>
 
@@ -108,7 +108,7 @@ function Register() {
             {/* Dynamic Name Field */}
             <div className="space-y-1.5">
               <label className="text-xs sm:text-sm font-extrabold text-gray-700 uppercase tracking-wide">
-                {isOrganisation ? "Organisation Name" : "Your Name"}
+                {isCustomer ? "Customer Name" : "Your Name"}
               </label>
               <input
                 required
@@ -192,7 +192,7 @@ function Register() {
           </div>
           <div>
             <h4 className="text-xs font-black text-white">Join The Savoryn Today</h4>
-            <p className="text-[10px] text-white/70 font-semibold mt-0.5">Level up your cooking career or hire elite vetted kitchen talents.</p>
+            <p className="text-[10px] text-white/70 font-semibold mt-0.5">Level up your cooking career or book elite vetted chefs.</p>
           </div>
         </div>
       </div>

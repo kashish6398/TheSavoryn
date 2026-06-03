@@ -196,7 +196,7 @@ function FindChef() {
 
               {/* Salary Range */}
               <div className="space-y-4">
-                <h4 className="text-sm font-extrabold uppercase text-gray-700 tracking-wide">Salary Range</h4>
+                <h4 className="text-sm font-extrabold uppercase text-gray-700 tracking-wide">Rate / Salary Range</h4>
                 <div className="space-y-3">
                   {["Any", ">30000k", ">50000k", ">80000k", ">100000k"].map((val, idx) => (
                     <label key={val} className="flex items-center gap-3 cursor-pointer text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-dark">
@@ -232,7 +232,7 @@ function FindChef() {
 
               {/* Type of Employment */}
               <div className="space-y-4">
-                <h4 className="text-sm font-extrabold uppercase text-gray-700 tracking-wide">Type of employment</h4>
+                <h4 className="text-sm font-extrabold uppercase tracking-wide text-gray-700">Booking Type</h4>
                 <div className="space-y-3">
                   {["Full Time", "Temporary", "Part Time"].map((val, idx) => (
                     <label key={val} className="flex items-center gap-3 cursor-pointer text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-dark">
@@ -305,7 +305,7 @@ function FindChef() {
 
                       {/* Preferred Salary */}
                       <p className="text-xs sm:text-sm text-brand-dark font-extrabold">
-                        Preferred salary range: <span className="text-brand-primary">{chef.salary}</span>
+                        Preferred rate range: <span className="text-brand-primary">{chef.salary}</span>
                       </p>
 
                       {/* Description */}

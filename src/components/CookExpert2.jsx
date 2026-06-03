@@ -24,7 +24,7 @@ function CookExpert2() {
             </div>
 
             <p className="text-gray-600 font-medium leading-relaxed">
-              Elevate your dining experiences, streamline restaurant operations, or throw the ultimate corporate banquet. Our platform matches you directly with the best vetted local culinary talent, tailored to your exact tastes and dietary requirements.
+              Elevate your private dining experiences, host exquisite dinner parties, or arrange custom catering for your private gatherings. Our platform matches you directly with the best vetted local culinary talent, tailored to your exact tastes and dietary requirements.
             </p>
 
             {/* List with Icons */}
