@@ -33,7 +33,7 @@ function NoteModal({ isOpen, onClose, chefName }) {
       >
         
         {/* Header */}
-        <div className="p-6 border-b border-gray-100 flex items-center justify-between shrink-0 bg-gradient-to-r from-brand-primary-light/30 via-transparent to-transparent">
+        <div className="p-6 border-b border-gray-150 flex items-center justify-between shrink-0 bg-linear-to-r from-brand-primary-light/30 via-transparent to-transparent">
           <div>
             <h2 className="text-xl font-black text-brand-dark tracking-tight">
               {isSuccess ? "Message Sent!" : `Send a Note to ${chefName}`}
