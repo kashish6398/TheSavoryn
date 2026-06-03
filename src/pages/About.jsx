@@ -91,7 +91,7 @@ function About() {
           {/* 4 Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Card 1: Tailored Matches */}
-            <div className="bg-gradient-to-b from-[#FFF5F2] to-white border border-[#FFF5F2] rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div className="bg-linear-to-b from-brand-primary-light to-white border border-brand-primary-light rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-6 border border-brand-primary/10 group-hover:scale-110 transition-transform duration-300">
                 <ChefHat className="w-8 h-8 text-brand-primary" />
               </div>
@@ -102,7 +102,7 @@ function About() {
             </div>
 
             {/* Card 2: Growth Opportunities */}
-            <div className="bg-gradient-to-b from-[#FFF5F2] to-white border border-[#FFF5F2] rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div className="bg-linear-to-b from-brand-primary-light to-white border border-brand-primary-light rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-6 border border-brand-primary/10 group-hover:scale-110 transition-transform duration-300">
                 <UtensilsCrossed className="w-8 h-8 text-brand-primary" />
               </div>
@@ -113,7 +113,7 @@ function About() {
             </div>
 
             {/* Card 3: Seamless Process */}
-            <div className="bg-gradient-to-b from-[#FFF5F2] to-white border border-[#FFF5F2] rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div className="bg-linear-to-b from-brand-primary-light to-white border border-brand-primary-light rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-6 border border-brand-primary/10 group-hover:scale-110 transition-transform duration-300">
                 <BookOpen className="w-8 h-8 text-brand-primary" />
               </div>
@@ -124,7 +124,7 @@ function About() {
             </div>
 
             {/* Card 4: Trusted Network */}
-            <div className="bg-gradient-to-b from-[#FFF5F2] to-white border border-[#FFF5F2] rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div className="bg-linear-to-b from-brand-primary-light to-white border border-brand-primary-light rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-6 border border-brand-primary/10 group-hover:scale-110 transition-transform duration-300">
                 <Handshake className="w-8 h-8 text-brand-primary" />
               </div>

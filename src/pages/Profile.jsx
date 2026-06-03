@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import chef1 from "../assets/top_chef_1.png";
@@ -10,8 +11,9 @@ import {
 } from "lucide-react";
 
 function Profile() {
+  const navigate = useNavigate();
   // Page toggle states
-  const [availableForBookings, setAvailableForBookings] = useState(true);
+  const [receiveUpdates, setReceiveUpdates] = useState(true);
   
   // Profile form state
   const [formData, setFormData] = useState({
@@ -122,17 +124,17 @@ function Profile() {
               {/* Toggle Seek Job Switch */}
               <div className="flex items-center gap-3">
                 <span className="text-xs sm:text-sm font-bold text-brand-dark">
-                  Are you available for bookings?
+                  Receive booking updates?
                 </span>
                 <button 
-                  onClick={() => setAvailableForBookings(!availableForBookings)}
+                  onClick={() => setReceiveUpdates(!receiveUpdates)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    availableForBookings ? "bg-brand-primary" : "bg-gray-200"
+                    receiveUpdates ? "bg-brand-primary" : "bg-gray-200"
                   }`}
                 >
                   <span
                     className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                      availableForBookings ? "translate-x-5" : "translate-x-0"
+                      receiveUpdates ? "translate-x-5" : "translate-x-0"
                     }`}
                   />
                 </button>
@@ -140,10 +142,10 @@ function Profile() {
 
               {/* Action Button */}
               <button 
-                onClick={() => alert("Redirecting to Customer flow...")}
+                onClick={() => navigate("/pricing")}
                 className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-3 px-6 font-extrabold shadow-lg shadow-brand-primary/20 transition-all duration-300 text-sm cursor-pointer"
               >
-                Complete Profile as a Customer
+                Upgrade Membership
               </button>
             </div>
           </div>
@@ -226,7 +228,7 @@ function Profile() {
               {/* Chef Category */}
               <div className="space-y-2">
                 <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Chef Category <span className="text-brand-primary">*</span>
+                  Preferred Cuisine / Category <span className="text-brand-primary">*</span>
                 </label>
                 <select 
                   name="chefCategory"
@@ -264,7 +266,7 @@ function Profile() {
               {/* Experience */}
               <div className="space-y-2">
                 <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Experience <span className="text-brand-primary">*</span>
+                  Preferred Chef Experience <span className="text-brand-primary">*</span>
                 </label>
                 <select 
                   name="experience"
@@ -273,7 +275,7 @@ function Profile() {
                   required
                   className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
                 >
-                  <option value="">Select your experience</option>
+                  <option value="">Select preferred chef experience</option>
                   <option value="Freshers">Freshers</option>
                   <option value="1 Year">1 Year</option>
                   <option value="2 Years">2 Years</option>
@@ -286,7 +288,7 @@ function Profile() {
               {/* Salary Expectation */}
               <div className="space-y-2">
                 <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Expected Rate / Salary <span className="text-brand-primary">*</span>
+                  Preferred Booking Budget <span className="text-brand-primary">*</span>
                 </label>
                 <select 
                   name="salaryExpectation"
@@ -295,7 +297,7 @@ function Profile() {
                   required
                   className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
                 >
-                  <option value="">Select your salary range</option>
+                  <option value="">Select your budget range</option>
                   <option value="₹30,000 - ₹50,000/month">₹30,000 - ₹50,000/month</option>
                   <option value="₹50,000 - ₹80,000/month">₹50,000 - ₹80,000/month</option>
                   <option value="₹80,000 - ₹100,000/month">₹80,000 - ₹100,000/month</option>
@@ -305,14 +307,14 @@ function Profile() {
               {/* About Yourself (Spans full width or is stacked) */}
               <div className="space-y-2 md:col-span-1">
                 <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  About Yourself
+                  About Yourself / Dietary Preferences
                 </label>
                 <textarea 
                   name="about"
                   rows={5}
                   value={formData.about}
                   onChange={handleInputChange}
-                  placeholder="Type a short description about yourself..."
+                  placeholder="Type a short description of your household, tastes, or dietary preferences..."
                   className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all resize-none"
                 />
               </div>
@@ -355,7 +357,7 @@ function Profile() {
             {/* Experience in Previous Job Section */}
             <div className="border-t border-gray-100 pt-8 space-y-6">
               <h3 className="text-base sm:text-lg font-black text-brand-dark tracking-tight">
-                Experience in previous bookings & jobs
+                My Bookings & Booking History
               </h3>
 
               {experiences.map((exp, idx) => (
@@ -377,11 +379,11 @@ function Profile() {
                   {/* Company Name */}
                   <div className="md:col-span-6 space-y-2">
                     <label className="block text-xs font-extrabold text-gray-700">
-                      Client / Restaurant Name
+                      Chef / Event Name
                     </label>
                     <input 
                       type="text" 
-                      placeholder="Type client or restaurant name..."
+                      placeholder="Type chef name or event type..."
                       value={exp.companyName}
                       onChange={(e) => handleExperienceChange(exp.id, "companyName", e.target.value)}
                       className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
@@ -391,7 +393,7 @@ function Profile() {
                   {/* Start Date */}
                   <div className="md:col-span-3 space-y-2">
                     <label className="block text-xs font-extrabold text-gray-700">
-                      Start
+                      Start Date
                     </label>
                     <input 
                       type="date" 
@@ -404,7 +406,7 @@ function Profile() {
                   {/* Leave Date */}
                   <div className="md:col-span-3 space-y-2">
                     <label className="block text-xs font-extrabold text-gray-700">
-                      Leave
+                      End Date
                     </label>
                     <input 
                       type="date" 
@@ -425,7 +427,7 @@ function Profile() {
                   className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-3 px-6 font-extrabold shadow-md shadow-brand-primary/15 hover:shadow-brand-primary/35 transition-all duration-300 text-sm cursor-pointer inline-flex items-center gap-2"
                 >
                   <Plus size={16} />
-                  <span>Add another Experience</span>
+                  <span>Add another Booking</span>
                 </button>
               </div>
 
@@ -446,7 +448,7 @@ function Profile() {
           {/* Favourite Section */}
           <div className="space-y-6">
             <h3 className="text-lg sm:text-xl font-black text-brand-dark tracking-tight pb-3 border-b border-gray-100">
-              Favourite
+              Saved Chefs
             </h3>
 
             {favoriteChefs.length === 0 ? (

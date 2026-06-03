@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import chef1 from "../assets/top_chef_1.png";
@@ -267,20 +268,23 @@ function FindChef() {
                   >
                     
                     {/* Chef Image */}
-                    <div className="w-full md:w-36 md:h-36 lg:w-40 lg:h-40 aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-md shrink-0">
+                    <Link 
+                      to={`/chef/${chef.id}`}
+                      className="w-full md:w-36 md:h-36 lg:w-40 lg:h-40 aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-md shrink-0 block"
+                    >
                       <img 
                         src={chef.image} 
                         alt={chef.name} 
                         className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
-                    </div>
+                    </Link>
 
                     {/* Chef Details */}
                     <div className="grow space-y-3.5 pr-0 md:pr-40">
                       
                       {/* Name */}
                       <h3 className="text-xl font-black text-brand-dark tracking-tight hover:text-brand-primary transition-colors cursor-pointer">
-                        {chef.name}
+                        <Link to={`/chef/${chef.id}`}>{chef.name}</Link>
                       </h3>
 
                       {/* Badges Row */}
@@ -331,12 +335,12 @@ function FindChef() {
                       </button>
 
                       {/* Contact Details Button */}
-                      <button 
-                        onClick={() => alert(`Contacting ${chef.name}...`)}
-                        className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-2.5 px-5 text-xs font-black shadow-md shadow-brand-primary/15 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                      <Link 
+                        to={`/chef/${chef.id}`}
+                        className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-2.5 px-5 text-xs font-black shadow-md shadow-brand-primary/15 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer inline-block text-center"
                       >
                         Contact Details
-                      </button>
+                      </Link>
 
                     </div>
 
