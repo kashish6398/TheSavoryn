@@ -11,6 +11,7 @@ import {
   MapPin, Clock, ChefHat, Briefcase, Star, ArrowLeft, 
   MessageSquare, CalendarCheck, ShieldCheck, Check 
 } from "lucide-react";
+import BookingModal from "../components/BookingModal";
 
 function ChefDetails() {
   const { id } = useParams();
@@ -107,11 +108,13 @@ function ChefDetails() {
     }
   };
 
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   // Find chef matching parameter ID, default to chef 1 if not found
   const chef = chefsData[id] || chefsData[1];
 
   const handleBookNow = () => {
-    alert(`Booking flow initialized for Chef ${chef.name}! Our support team will contact you shortly.`);
+    setIsBookingModalOpen(true);
   };
 
   const handleSendNote = () => {
@@ -302,6 +305,13 @@ function ChefDetails() {
       </main>
 
       <Footer />
+
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+        chefName={chef.name} 
+      />
     </div>
   );
 }
