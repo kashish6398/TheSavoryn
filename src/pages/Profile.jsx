@@ -7,7 +7,7 @@ import chef2 from "../assets/top_chef_2.png";
 import chef4 from "../assets/hero_chef.png";
 import chef5 from "../assets/cook_expert_1.png";
 import { 
-  Heart, MapPin, Clock, ChefHat, Briefcase, Calendar, Phone, Plus, Trash2 
+  Heart, MapPin, Clock, ChefHat, Briefcase, Calendar, Phone, Plus, Trash2, Mail, Users, Check, X, ShieldCheck
 } from "lucide-react";
 
 function Profile() {
@@ -18,21 +18,60 @@ function Profile() {
   // Profile form state
   const [formData, setFormData] = useState({
     fullName: "Alexa Rawles",
-    address: "",
+    email: "alexarawles@gmail.com",
+    address: "123 Gourmet Lane, Foodie Town",
     gender: "Female",
-    lookingFor: "Full Time",
-    chefCategory: "Pizza Chef",
     dob: "1997-08-01",
-    experience: "",
-    salaryExpectation: "",
-    about: "",
-    phone: "",
-    altPhone: ""
+    phone: "+1 (555) 019-2834",
+    altPhone: "+1 (555) 019-5678",
+    householdSize: "Family of 3-4",
+    about: "We love hosting family dinners and weekend barbecues. Prefer organic, fresh ingredients and light desserts."
   });
 
-  // Previous job experience dynamic state
-  const [experiences, setExperiences] = useState([
-    { id: 1, companyName: "", start: "2020-02-15", leave: "2023-02-15" }
+  // User preferences (Dietary Restrictions and Preferred Cuisines)
+  const [dietaryPreferences, setDietaryPreferences] = useState([
+    { id: "veg", label: "Vegetarian", selected: false },
+    { id: "vegan", label: "Vegan", selected: false },
+    { id: "gf", label: "Gluten-Free", selected: true },
+    { id: "halal", label: "Halal", selected: false },
+    { id: "nutfree", label: "Nut-Free", selected: true },
+    { id: "df", label: "Dairy-Free", selected: false },
+    { id: "lowcarb", label: "Low-Carb", selected: false }
+  ]);
+
+  const [preferredCuisines, setPreferredCuisines] = useState([
+    { id: "italian", label: "Italian", selected: true },
+    { id: "indian", label: "Indian", selected: false },
+    { id: "chinese", label: "Chinese", selected: true },
+    { id: "mexican", label: "Mexican", selected: false },
+    { id: "french", label: "French", selected: false },
+    { id: "japanese", label: "Japanese", selected: true },
+    { id: "mediterranean", label: "Mediterranean", selected: true },
+    { id: "thai", label: "Thai", selected: false }
+  ]);
+
+  // Bookings state
+  const [bookings, setBookings] = useState([
+    {
+      id: 1,
+      chefName: "Elena Petrova",
+      chefRole: "Pizza Chef",
+      date: "2026-06-15",
+      time: "Dinner (6:00 PM - 10:00 PM)",
+      status: "Confirmed",
+      amount: "₹8,000",
+      image: chef5
+    },
+    {
+      id: 2,
+      chefName: "Oliver Bennett",
+      chefRole: "Baker Chef",
+      date: "2026-05-20",
+      time: "Morning Booking (8:00 AM - 12:00 PM)",
+      status: "Completed",
+      amount: "₹12,000",
+      image: chef1
+    }
   ]);
 
   // Favorites state (allows unfavoriting items)
@@ -66,19 +105,42 @@ function Profile() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleExperienceChange = (id, field, value) => {
-    setExperiences(prev => prev.map(exp => exp.id === id ? { ...exp, [field]: value } : exp));
+  const handleToggleDietary = (id) => {
+    setDietaryPreferences(prev =>
+      prev.map(item => (item.id === id ? { ...item, selected: !item.selected } : item))
+    );
   };
 
-  const addExperience = () => {
-    setExperiences(prev => [
-      ...prev,
-      { id: Date.now(), companyName: "", start: "", leave: "" }
-    ]);
+  const handleToggleCuisine = (id) => {
+    setPreferredCuisines(prev =>
+      prev.map(item => (item.id === id ? { ...item, selected: !item.selected } : item))
+    );
   };
 
-  const removeExperience = (id) => {
-    setExperiences(prev => prev.filter(exp => exp.id !== id));
+  const handleCancelBooking = (id) => {
+    setBookings(prev =>
+      prev.map(booking => (booking.id === id ? { ...booking, status: "Cancelled" } : booking))
+    );
+  };
+
+  const addMockBooking = () => {
+    const mockChefs = [
+      { name: "Elena Petrova", role: "Pizza Chef", img: chef5 },
+      { name: "Oliver Bennett", role: "Baker Chef", img: chef1 },
+      { name: "Sophia Martina", role: "Chinese Chef", img: chef2 }
+    ];
+    const chefObj = mockChefs[Math.floor(Math.random() * mockChefs.length)];
+    const newBooking = {
+      id: Date.now(),
+      chefName: chefObj.name,
+      chefRole: chefObj.role,
+      date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+      time: "Evening Event (5:00 PM - 9:00 PM)",
+      status: "Pending",
+      amount: "₹10,000",
+      image: chefObj.img
+    };
+    setBookings(prev => [newBooking, ...prev]);
   };
 
   const toggleFavorite = (id) => {
@@ -110,11 +172,12 @@ function Profile() {
                 />
               </div>
               <div>
-                <h2 className="text-xl md:text-2xl font-black text-brand-dark tracking-tight">
-                  Alexa Rawles
+                <h2 className="text-xl md:text-2xl font-black text-brand-dark tracking-tight animate-fade-in">
+                  {formData.fullName || "Alexa Rawles"}
                 </h2>
-                <p className="text-gray-500 font-bold text-sm">
-                  alexarawles@gmail.com
+                <p className="text-gray-500 font-bold text-sm flex items-center gap-1.5">
+                  <Mail size={14} className="text-brand-primary" />
+                  <span>{formData.email}</span>
                 </p>
               </div>
             </div>
@@ -153,105 +216,87 @@ function Profile() {
           {/* Form Block */}
           <form onSubmit={handleSaveProfile} className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-200/40 space-y-10">
             
-            {/* Form Fields Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-              
-              {/* Full Name */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Full Name <span className="text-brand-primary">*</span>
-                </label>
-                <input 
-                  type="text" 
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="Alexa Rawles"
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
-                />
-              </div>
+            {/* Personal Details Section */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-black text-brand-dark tracking-tight pb-3 border-b border-gray-100 flex items-center gap-2">
+                <Briefcase size={20} className="text-brand-primary" />
+                <span>Personal Information</span>
+              </h3>
 
-              {/* Address */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Address <span className="text-brand-primary">*</span>
-                </label>
-                <input 
-                  type="text" 
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  required
-                  placeholder="Type your address"
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
-                />
-              </div>
+              {/* Form Fields Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                
+                {/* Full Name */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Full Name <span className="text-brand-primary">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Alexa Rawles"
+                    className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
+                  />
+                </div>
 
-              {/* Gender */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Gender <span className="text-brand-primary">*</span>
-                </label>
-                <select 
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                >
-                  <option value="Female">Female</option>
-                  <option value="Male">Male</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
+                {/* Email Address */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Email Address <span className="text-brand-primary">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="alexarawles@gmail.com"
+                    className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
+                  />
+                </div>
 
-              {/* Looking for */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Booking Type <span className="text-brand-primary">*</span>
-                </label>
-                <select 
-                  name="lookingFor"
-                  value={formData.lookingFor}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                >
-                  <option value="Full Time">Full Time</option>
-                  <option value="Part Time">Part Time</option>
-                  <option value="Temporary">Temporary</option>
-                  <option value="Contract">Contract</option>
-                </select>
-              </div>
+                {/* Address */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Event / Dining Address <span className="text-brand-primary">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Type your address"
+                    className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
+                  />
+                </div>
 
-              {/* Chef Category */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Preferred Cuisine / Category <span className="text-brand-primary">*</span>
-                </label>
-                <select 
-                  name="chefCategory"
-                  value={formData.chefCategory}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                >
-                  <option value="Pizza Chef">Pizza Chef</option>
-                  <option value="Baker Chef">Baker Chef</option>
-                  <option value="Chinese Chef">Chinese Chef</option>
-                  <option value="Indian Chef">Indian Chef</option>
-                  <option value="Donut Chef">Donut Chef</option>
-                  <option value="Chocolate Chef">Chocolate Chef</option>
-                </select>
-              </div>
+                {/* Gender */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Gender <span className="text-brand-primary">*</span>
+                  </label>
+                  <select 
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
+                  >
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
 
-              {/* Date of Birth */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Data of Birth <span className="text-brand-primary">*</span>
-                </label>
-                <div className="relative">
+                {/* Date of Birth */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Date of Birth <span className="text-brand-primary">*</span>
+                  </label>
                   <input 
                     type="date" 
                     name="dob"
@@ -261,66 +306,8 @@ function Profile() {
                     className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
                   />
                 </div>
-              </div>
 
-              {/* Experience */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Preferred Chef Experience <span className="text-brand-primary">*</span>
-                </label>
-                <select 
-                  name="experience"
-                  value={formData.experience}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                >
-                  <option value="">Select preferred chef experience</option>
-                  <option value="Freshers">Freshers</option>
-                  <option value="1 Year">1 Year</option>
-                  <option value="2 Years">2 Years</option>
-                  <option value="3 Years">3 Years</option>
-                  <option value="4 Years">4 Years</option>
-                  <option value="5+ Years">5+ Years</option>
-                </select>
-              </div>
-
-              {/* Salary Expectation */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  Preferred Booking Budget <span className="text-brand-primary">*</span>
-                </label>
-                <select 
-                  name="salaryExpectation"
-                  value={formData.salaryExpectation}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                >
-                  <option value="">Select your budget range</option>
-                  <option value="₹30,000 - ₹50,000/month">₹30,000 - ₹50,000/month</option>
-                  <option value="₹50,000 - ₹80,000/month">₹50,000 - ₹80,000/month</option>
-                  <option value="₹80,000 - ₹100,000/month">₹80,000 - ₹100,000/month</option>
-                </select>
-              </div>
-
-              {/* About Yourself (Spans full width or is stacked) */}
-              <div className="space-y-2 md:col-span-1">
-                <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
-                  About Yourself / Dietary Preferences
-                </label>
-                <textarea 
-                  name="about"
-                  rows={5}
-                  value={formData.about}
-                  onChange={handleInputChange}
-                  placeholder="Type a short description of your household, tastes, or dietary preferences..."
-                  className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all resize-none"
-                />
-              </div>
-
-              {/* Phone and Alt Phone in Stack/Col */}
-              <div className="space-y-6">
+                {/* Phone */}
                 <div className="space-y-2">
                   <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
                     Contact phone number <span className="text-brand-primary">*</span>
@@ -336,6 +323,7 @@ function Profile() {
                   />
                 </div>
                 
+                {/* Alternative Phone */}
                 <div className="space-y-2">
                   <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
                     Contact alternative phone number <span className="text-brand-primary">*</span>
@@ -346,104 +334,227 @@ function Profile() {
                     value={formData.altPhone}
                     onChange={handleInputChange}
                     required
-                    placeholder="Type your phone number"
+                    placeholder="Type your alternative phone number"
                     className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
                   />
                 </div>
-              </div>
 
+                {/* Household Size */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Household Size <span className="text-brand-primary">*</span>
+                  </label>
+                  <select 
+                    name="householdSize"
+                    value={formData.householdSize}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
+                  >
+                    <option value="Single">Single</option>
+                    <option value="Couple">Couple</option>
+                    <option value="Family of 3-4">Family of 3-4</option>
+                    <option value="Large Family (5+ members)">Large Family (5+ members)</option>
+                  </select>
+                </div>
+
+              </div>
             </div>
 
-            {/* Experience in Previous Job Section */}
+            {/* Culinary & Dietary Preferences Section */}
             <div className="border-t border-gray-100 pt-8 space-y-6">
-              <h3 className="text-base sm:text-lg font-black text-brand-dark tracking-tight">
-                My Bookings & Booking History
+              <h3 className="text-lg font-black text-brand-dark tracking-tight pb-3 border-b border-gray-100 flex items-center gap-2">
+                <ChefHat size={20} className="text-brand-primary" />
+                <span>Culinary & Dietary Preferences</span>
               </h3>
 
-              {experiences.map((exp, idx) => (
-                <div 
-                  key={exp.id} 
-                  className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end bg-[#fcfdfe] border border-gray-100 p-5 rounded-2xl relative group"
-                >
-                  {/* Delete Row Button */}
-                  {experiences.length > 1 && (
-                    <button
-                      type="button"
-                      onClick={() => removeExperience(exp.id)}
-                      className="absolute top-2 right-2 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  )}
-
-                  {/* Company Name */}
-                  <div className="md:col-span-6 space-y-2">
-                    <label className="block text-xs font-extrabold text-gray-700">
-                      Chef / Event Name
-                    </label>
-                    <input 
-                      type="text" 
-                      placeholder="Type chef name or event type..."
-                      value={exp.companyName}
-                      onChange={(e) => handleExperienceChange(exp.id, "companyName", e.target.value)}
-                      className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all"
-                    />
+              <div className="grid grid-cols-1 gap-6">
+                
+                {/* Dietary Restrictions Tags */}
+                <div className="space-y-2.5">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Dietary Restrictions <span className="text-xs text-gray-400 font-semibold">(Select all that apply)</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2.5">
+                    {dietaryPreferences.map((pref) => (
+                      <button
+                        key={pref.id}
+                        type="button"
+                        onClick={() => handleToggleDietary(pref.id)}
+                        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm border transition-all cursor-pointer flex items-center gap-1.5 ${
+                          pref.selected
+                            ? "bg-brand-primary/10 border-brand-primary text-brand-primary shadow-xs"
+                            : "bg-[#f8fafc] border-gray-200 text-gray-500 hover:border-gray-300"
+                        }`}
+                      >
+                        {pref.selected && <Check size={14} />}
+                        <span>{pref.label}</span>
+                      </button>
+                    ))}
                   </div>
-
-                  {/* Start Date */}
-                  <div className="md:col-span-3 space-y-2">
-                    <label className="block text-xs font-extrabold text-gray-700">
-                      Start Date
-                    </label>
-                    <input 
-                      type="date" 
-                      value={exp.start}
-                      onChange={(e) => handleExperienceChange(exp.id, "start", e.target.value)}
-                      className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                    />
-                  </div>
-
-                  {/* Leave Date */}
-                  <div className="md:col-span-3 space-y-2">
-                    <label className="block text-xs font-extrabold text-gray-700">
-                      End Date
-                    </label>
-                    <input 
-                      type="date" 
-                      value={exp.leave}
-                      onChange={(e) => handleExperienceChange(exp.id, "leave", e.target.value)}
-                      className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all cursor-pointer"
-                    />
-                  </div>
-
                 </div>
-              ))}
 
-              {/* Add Another Experience Button */}
-              <div>
-                <button
-                  type="button"
-                  onClick={addExperience}
-                  className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-3 px-6 font-extrabold shadow-md shadow-brand-primary/15 hover:shadow-brand-primary/35 transition-all duration-300 text-sm cursor-pointer inline-flex items-center gap-2"
-                >
-                  <Plus size={16} />
-                  <span>Add another Booking</span>
-                </button>
+                {/* Preferred Cuisines Tags */}
+                <div className="space-y-2.5">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    Preferred Cuisines <span className="text-xs text-gray-400 font-semibold">(Select all that apply)</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2.5">
+                    {preferredCuisines.map((cuisine) => (
+                      <button
+                        key={cuisine.id}
+                        type="button"
+                        onClick={() => handleToggleCuisine(cuisine.id)}
+                        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm border transition-all cursor-pointer flex items-center gap-1.5 ${
+                          cuisine.selected
+                            ? "bg-brand-primary/10 border-brand-primary text-brand-primary shadow-xs"
+                            : "bg-[#f8fafc] border-gray-200 text-gray-500 hover:border-gray-300"
+                        }`}
+                      >
+                        {cuisine.selected && <Check size={14} />}
+                        <span>{cuisine.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* About Household / Special Instructions */}
+                <div className="space-y-2">
+                  <label className="block text-xs sm:text-sm font-extrabold text-gray-700">
+                    About My Household / Special Dietary Needs
+                  </label>
+                  <textarea 
+                    name="about"
+                    rows={4}
+                    value={formData.about}
+                    onChange={handleInputChange}
+                    placeholder="Type a description of your household tastes, allergen details, or special requests..."
+                    className="w-full bg-[#f8fafc] border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-brand-dark focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/25 outline-none transition-all resize-none"
+                  />
+                </div>
+
               </div>
-
             </div>
 
-            {/* Submit Button */}
+            {/* Save Button */}
             <div className="border-t border-gray-100 pt-6 flex justify-end">
               <button
                 type="submit"
                 className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-full py-3.5 px-8 font-black shadow-lg shadow-brand-primary/25 hover:shadow-brand-primary/45 transition-all duration-300 text-sm cursor-pointer"
               >
-                Save Details
+                Save Profile Details
               </button>
             </div>
 
           </form>
+
+          {/* Bookings Section */}
+          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-200/40 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-150">
+              <div>
+                <h3 className="text-xl font-black text-brand-dark tracking-tight">
+                  My Bookings & Booking History
+                </h3>
+                <p className="text-xs text-gray-500 font-bold mt-0.5">
+                  Manage and track your active and past chef bookings
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={addMockBooking}
+                  className="bg-gray-100 hover:bg-gray-200 text-brand-dark rounded-xl py-2.5 px-5 font-extrabold transition-all text-xs cursor-pointer inline-flex items-center gap-2"
+                >
+                  <Plus size={14} />
+                  <span>Add Mock Booking</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => navigate("/find-chef")}
+                  className="bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl py-2.5 px-5 font-extrabold shadow-md shadow-brand-primary/15 hover:shadow-brand-primary/35 transition-all text-xs cursor-pointer inline-flex items-center gap-2"
+                >
+                  <span>Book a New Chef</span>
+                </button>
+              </div>
+            </div>
+
+            {bookings.length === 0 ? (
+              <div className="text-center py-12 text-gray-400 font-bold bg-[#fcfdfe] border border-dashed border-gray-200 rounded-2xl">
+                No bookings made yet. Find your perfect chef to get started!
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {bookings.map((booking) => (
+                  <div 
+                    key={booking.id}
+                    className="bg-white border border-gray-150 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex gap-4 relative overflow-hidden group"
+                  >
+                    
+                    {/* Chef Thumbnail */}
+                    <div className="w-16 h-16 rounded-xl overflow-hidden border border-gray-100 shrink-0">
+                      <img 
+                        src={booking.image || "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=100&h=100&q=80"} 
+                        alt={booking.chefName} 
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Booking Info */}
+                    <div className="grow space-y-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="font-extrabold text-brand-dark text-sm sm:text-base">
+                          {booking.chefName}
+                        </h4>
+                        <span 
+                          className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${
+                            booking.status === "Confirmed"
+                              ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
+                              : booking.status === "Completed"
+                              ? "bg-blue-50 text-blue-600 border border-blue-100"
+                              : booking.status === "Pending"
+                              ? "bg-amber-50 text-amber-600 border border-amber-100"
+                              : "bg-rose-50 text-rose-600 border border-rose-100"
+                          }`}
+                        >
+                          {booking.status}
+                        </span>
+                      </div>
+                      
+                      <p className="text-xs text-gray-500 font-semibold">{booking.chefRole}</p>
+                      
+                      <div className="text-xs font-semibold text-gray-500 pt-2 space-y-1 border-t border-gray-50 mt-2">
+                        <div className="flex items-center gap-1.5">
+                          <Calendar size={13} className="text-brand-primary" />
+                          <span>Date: {booking.date}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Clock size={13} className="text-brand-primary" />
+                          <span>Time: {booking.time}</span>
+                        </div>
+                        <div className="text-brand-dark font-extrabold mt-1">
+                          Amount Paid: <span className="text-brand-primary">{booking.amount}</span>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Cancel Booking Action */}
+                    {(booking.status === "Pending" || booking.status === "Confirmed") && (
+                      <button
+                        type="button"
+                        onClick={() => handleCancelBooking(booking.id)}
+                        title="Cancel Booking"
+                        className="absolute top-4 right-4 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    )}
+
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Favourite Section */}
           <div className="space-y-6">
